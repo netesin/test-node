@@ -16,10 +16,10 @@ RUN /env/bin/pip install --no-cache --upgrade pip setuptools
 # Скопируем файлы package.json и package-lock.json
 COPY package*.json ./
 
-ENV NODE_TLS_REJECT_UNAUTHORIZED=0
-
 # Устанавливаем зависимости Node.js с увеличением таймаута для npm
 RUN npm install -g node-gyp && node-gyp install
+
+ENV NODE_TLS_REJECT_UNAUTHORIZED=0
 RUN npm install --verbose
 
 ## Скопируем весь проект в контейнер
