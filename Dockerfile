@@ -19,7 +19,8 @@ COPY package*.json ./
 ENV NODE_TLS_REJECT_UNAUTHORIZED=0
 
 # Устанавливаем зависимости Node.js с увеличением таймаута для npm
-RUN npm install --verbose --fetch-timeout=30000
+RUN npm install -g node-gyp
+RUN npm install --verbose
 
 ## Скопируем весь проект в контейнер
 COPY . .
