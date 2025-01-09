@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:22
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
@@ -6,7 +6,7 @@ WORKDIR /app
 # Обновляем репозитории и устанавливаем необходимые пакеты, включая Python, make, g++, py3-pip, bash, libc-dev и build-base для node-gyp
 RUN apt update && apt install -y python3 wget make g++ libc-dev git libffi-dev
 
-RUN wget https://unofficial-builds.nodejs.org/download/release/v20.18.1/node-v20.18.1-headers.tar.gz
+# RUN wget https://unofficial-builds.nodejs.org/download/release/v20.18.1/node-v20.18.1-headers.tar.gz
 
 # Скопируем файлы package.json и package-lock.json
 COPY package*.json ./
