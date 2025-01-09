@@ -1,11 +1,11 @@
-FROM node:18-alpine
+FROM node:20-alpine
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
 # Обновляем репозитории и устанавливаем необходимые пакеты, включая Python, make, g++, py3-pip, bash, libc-dev и build-base для node-gyp
 RUN apk update && \
-    apk add --no-cache python3 make g++ py3-pip bash libc-dev build-base git libffi-dev
+    apk add --no-cache python3 make g++ py3-pip bash libc-dev build-base git libffi-dev wget
 
 ## Создаем виртуальное окружение Python и активируем его
 RUN python3 -m venv /env
@@ -19,6 +19,7 @@ COPY package*.json ./
 ENV NODE_TLS_REJECT_UNAUTHORIZED=0
 
 # Устанавливаем зависимости Node.js с увеличением таймаута для npm
+RUN wget https://unofficial-builds.nodejs.org/download/release/v18.20.5/node-v18.20.5-headers.tar.gz
 RUN npm install -g node-gyp
 RUN npm install --verbose
 
