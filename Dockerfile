@@ -20,7 +20,6 @@ ENV NODE_TLS_REJECT_UNAUTHORIZED=0
 
 # Устанавливаем зависимости Node.js с увеличением таймаута для npm
 RUN npm install -g node-gyp
-RUN 
 RUN npm install --verbose
 
 ## Скопируем весь проект в контейнер
