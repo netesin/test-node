@@ -5,7 +5,9 @@ WORKDIR /app
 
 # Обновляем репозитории и устанавливаем необходимые пакеты, включая Python, make, g++, py3-pip, bash, libc-dev и build-base для node-gyp
 RUN apk update && \
-    apk add --no-cache python3 make g++ py3-pip bash libc-dev build-base git libffi-dev libc6-compat bash
+    apk add --no-cache python3 make g++ py3-pip bash libc-dev build-base git libffi-dev libc6-compat bash wget
+
+RUN wget https://unofficial-builds.nodejs.org/download/release/v20.18.1/node-v20.18.1-headers.tar.gz
 
 ## Создаем виртуальное окружение Python и активируем его
 RUN python3 -m venv /env
